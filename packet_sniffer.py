@@ -30,12 +30,12 @@ def packet_callback(packet):
             packet_data['dns_qd'] = packet[DNS].qd
             packet_data['dns_an'] = packet[DNS].an
 
-    # Log packet data
+    
     with open('packets_log.json', 'a') as log_file:
         json.dump(packet_data, log_file)
         log_file.write('\n')
 
-    # Display packet information
+    
     print(f"{datetime.datetime.now()} - Src: {packet_data['src_ip']} | Dst: {packet_data['dst_ip']} | Protocol: {packet_data['protocol']}")
     if 'src_port' in packet_data:
         print(f"Port: {packet_data['src_port']} | Dst Port: {packet_data['dst_port']}")
